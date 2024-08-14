@@ -23,8 +23,7 @@ class Program{
 
 
         int fs = 200;
-        bool success;
-        string csvFilePath = "C:/Users/tousi.KCRND/Desktop/Inference_AF/first/new_test.csv";
+        string csvFilePath = "C:/Users/tousi/Desktop/Inference_AF/first/new_test.csv";
         int desiredLength = 8000;
         List<float> ecgSignal = ReadECGFromCSV(csvFilePath);
         ecgSignal = PreProcess.EnsureDesiredLength(ecgSignal, desiredLength);
@@ -41,7 +40,6 @@ class Program{
         List<(int index, string label)> segmentLabels = new List<(int, string)>();
         List<float[]> Filter_list = new List<float[]>();
 
-        int segmentIndex = 0;
 
         foreach (List<float> segment in result)
         {
@@ -54,33 +52,18 @@ class Program{
             float[] butterECG = butter.Apply_filter(filteredECG, fs);
             Filter_list.Add(butterECG);
 
-            TenetResult tenet_result = QRSTenet.Main(butterECG, fs, out success);
-            double mean = tenet_result.Average();
-
-            if (mean <= 1)
-            {
-                filteredECGSignals.Add(butterECG);
-                segmentLabels.Add((segmentIndex, "Processing"));
-            }
-            else
-            {
-                segmentLabels.Add((segmentIndex, "Noisy"));
-            }
-
-            segmentIndex++;
         }
-
 
         double sourceSamplingRate = 200;
         double targetSamplingRate = 100;
         var model = new MobileNetV2("mobilenet");
-        model.load("C:/Users/tousi.KCRND/Desktop/Inference_AF/first/new_mobilenet_model_weights.dat");
+        model.load("C:/Users/tousi/Desktop/Inference/first/new_mobilenet_model_weights.dat");
         model.eval();
 
         // Predict labels
-        for (int i = 0; i < filteredECGSignals.Count; i++)
+        for (int i = 0; i < Filter_list.Count; i++)
         {
-            var signal = filteredECGSignals[i];
+            var signal = Filter_list[i];
             double[] signalArray = signal.Select(x => (double)x).ToArray();
             double[] resampledSignal = PreProcess.CubicHermiteInterpol(signalArray, sourceSamplingRate, targetSamplingRate);
             List<float> resampledSignalList = resampledSignal.Select(x => (float)x).ToList();
@@ -113,7 +96,6 @@ class Program{
         {
             Console.WriteLine($"Segment {segmentLabel.index}: Predicted label: {segmentLabel.label}");
         }
-            
 
      }
     

@@ -1,0 +1,106 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/maedeh/Desktop/Github/real-time-arrhythmia-detection/Arrhythmia Detection inference/first.csproj": {}
+  },
+  "projects": {
+    "/Users/maedeh/Desktop/Github/real-time-arrhythmia-detection/Arrhythmia Detection inference/first.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/maedeh/Desktop/Github/real-time-arrhythmia-detection/Arrhythmia Detection inference/first.csproj",
+        "projectName": "first",
+        "projectPath": "/Users/maedeh/Desktop/Github/real-time-arrhythmia-detection/Arrhythmia Detection inference/first.csproj",
+        "packagesPath": "/Users/maedeh/.nuget/packages/",
+        "outputPath": "/Users/maedeh/Desktop/Github/real-time-arrhythmia-detection/Arrhythmia Detection inference/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/maedeh/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Accord": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "Accord.Audio": {
+              "target": "Package",
+              "version": "[3.8.0, )"
+            },
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "TorchSharp": {
+              "target": "Package",
+              "version": "[0.101.2, )"
+            },
+            "libtorch-cpu-win-x64": {
+              "target": "Package",
+              "version": "[2.1.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-arm64",
+              "version": "[7.0.18, 7.0.18]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.18, 7.0.18]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
